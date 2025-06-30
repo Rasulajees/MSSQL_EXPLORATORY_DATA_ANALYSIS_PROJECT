@@ -213,7 +213,6 @@ Or, I can help **convert this SQL logic to Python or Pandas** for Jupyter Notebo
 👨‍💻 Author
 Name: Rasul khan 
 LinkedIn: https://www.linkedin.com/in/rasul-khan-a-101624296/
-GitHub: https://github.com/Rasulajees
 Email: rasulkhanoffi@gmail.com
        rasulkhan8870678757@gmail.com
        rasulkhan2003@outlook.com
