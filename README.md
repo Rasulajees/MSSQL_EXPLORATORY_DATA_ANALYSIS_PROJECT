@@ -1,69 +1,224 @@
-📊 Data Warehouse Analytics Project 🚀
+# 📊 Advanced Analytics Project – SQL Data Warehouse & BI Analysis
 
-Overview
-Welcome to the Data Warehouse Analytics Project! This project is designed to create a robust data warehouse for advanced analytics, focusing on sales performance, customer behavior, and product metrics.
+#🧠 Advanced Analytics Data Warehouse Project
+This project sets up a SQL Server-based Data Warehouse for analytical reporting. It demonstrates the full cycle from database creation to data ingestion using BULK INSERT. The warehouse includes dimension and fact tables optimized for advanced data analytics tasks. 📊 Cumulative Sales Analytics – SQL Window Functions
+This segment of the Advanced Analytics project demonstrates how to perform cumulative and moving average calculations over time using SQL Server window functions. These insights are essential for trend analysis and time-series reporting.
 
-🏗️ Database Creation
-The script initiates by creating a new database named DataWarehouseAnalytics. If the database already exists, it will be dropped and recreated.
+This repository contains a full-fledged **SQL-based Advanced Analytics Project**, simulating a data warehouse and performing deep-dive business analytics on customer behavior, product performance, and sales trends.
 
-⚠️ Warning
-Running this script will permanently delete all data in the DataWarehouseAnalytics database if it exists. Please ensure you have proper backups before proceeding!
+Ideal for:
+- Business intelligence analysts
+- Data engineers & data analysts
+- Students learning SQL-based analytics
+- Portfolio enhancement for job applications
 
-📂 Schema and Tables
-Schema
-gold: This schema contains the main tables for analytics.
+---
 
-Tables
-dim_customers: Customer information.
-dim_products: Product details.
-fact_sales: Sales transaction data.
+## 🚧 Project Overview
 
-📥 Data Ingestion
-Data is loaded into the tables using the BULK INSERT command from CSV files. The tables are truncated before loading new data to prevent duplication.
+This project demonstrates how to:
+✅ Design and build a **data warehouse**  
+✅ Use **ETL** concepts with `BULK INSERT`  
+✅ Write **advanced SQL queries** using window functions, CTEs, aggregation, and reporting  
+✅ Perform **business analysis** and generate **data insights**
 
-📈 Analytics Queries
-The project includes several analytical queries to derive insights:
+---
 
-1. 📅 Sales Performance Over Time
-Analyzes total sales, unique customers, and quantity sold over time, grouped by year and month.
+## 🗃️ Components & Structure
 
-2. 📊 Cumulative Analytics
-Calculates total sales per month and the running total of sales over time using window functions.
+sql-data-analytics-project/
+│
+├── datasets/
+│ └── csv-files/
+│ ├── gold.dim_customers.csv
+│ ├── gold.dim_products.csv
+│ └── gold.fact_sales.csv
+│
+├── scripts/
+│ └── advanced_analytics_project.sql
+│
+└── README.md
 
-3. 📦 Yearly Product Performance
-Compares each product's sales performance to its average and the previous year's sales.
 
-4. 📊 Category Contribution to Sales
-Identifies which product categories contribute the most to overall sales.
+---
 
-5. 💰 Product Segmentation by Cost
-Segments products into cost ranges and counts how many products fall into each segment.
+## 🛠️ Tools & Technologies
 
-6. 👥 Customer Segmentation by Spending Behavior
-Segments customers into VIP, Regular, and New categories based on their spending and lifespan.
+| Tool             | Purpose                              |
+|------------------|--------------------------------------|
+| SQL Server        | Database platform                   |
+| T-SQL (SQL)       | Data manipulation & reporting       |
+| SQL Server Mgmt Studio (SSMS) | SQL development IDE     |
+| CSV files         | Raw data input (ETL stage)          |
+| Views             | Reusable reports & data models      |
 
-📋 Customer Report
-The customer report consolidates key metrics and behaviors, including:
+---
 
-Total orders, sales, quantity purchased, and products.
-Customer segmentation by age and spending behavior.
-Key performance indicators such as recency, average order value, and average monthly spend.
+## 🧩 Data Warehouse Design
 
-📦 Product Report
-The product report consolidates key product metrics, including:
+**Database:** `DataWarehouseAnalytics`  
+**Schema:** `gold`  
+**Tables:**
+- `dim_customers`: Customer demographics and lifecycle
+- `dim_products`: Product attributes and pricing
+- `fact_sales`: Sales transactions (order facts)
 
-Total orders, sales, quantity sold, and unique customers.
-Segmentation of products by revenue performance.
-Key performance indicators such as recency, average order revenue, and average monthly revenue.
+✅ Star schema modeling  
+✅ Normalized dimension tables  
+✅ Fact table for analytics  
 
-⚙️ Usage
-To run the script:
+---
 
-Ensure you have SQL Server installed and configured.
-Update the file paths in the BULK INSERT commands to point to your CSV files.
-Execute the script in SQL Server Management Studio (SSMS) or any SQL client that supports T-SQL.
+## 📦 Datasets
 
-⚠️ Caution
-Running this script will drop the existing DataWarehouseAnalytics database if it exists, leading to permanent data loss. Ensure you have proper backups before executing the script.
+| Table            | Description                            |
+|------------------|----------------------------------------|
+| `dim_customers`  | Contains customer profile info         |
+| `dim_products`   | Details about products, categories     |
+| `fact_sales`     | Sales transactions across time         |
 
-🎉 Conclusion
+Each dataset is stored in CSV format and ingested using `BULK INSERT`.
+
+---
+
+## 📊 Analytical Modules
+
+### 📈 1. **Sales Trend Analysis**
+- Monthly and yearly sales patterns
+- Identify seasonality and performance shifts
+- Cumulative revenue tracking
+- Moving average pricing
+
+### 📊 2. **Product Performance**
+- Product-level sales vs average
+- Year-over-year growth
+- Performance segmentation (High/Mid/Low)
+- Average Order Revenue & Monthly Revenue
+
+### 👥 3. **Customer Segmentation**
+- Segment customers by lifetime spend and order history:
+  - VIP: > ₹5000 & lifespan ≥ 12 months  
+  - Regular: ≤ ₹5000 & lifespan ≥ 12 months  
+  - New: Lifespan < 12 months
+- Track customer age groups
+- KPIs: Average Order Value (AOV), Monthly Spend, Recency
+
+### 🧠 4. **Category Contribution**
+- Contribution to overall revenue by product category
+- Percentage breakdown (Part-to-Whole analysis)
+
+### 🧮 5. **Data Segmentation**
+- Products grouped by cost into price segments:
+  - Below ₹100
+  - ₹100–₹500
+  - ₹500–₹1000
+  - Above ₹1000
+
+---
+
+## 📊 Reports
+
+### ✅ Customer Report
+Generated by SQL using CTEs and aggregations:
+- Age & Age Group
+- Customer segment (VIP, Regular, New)
+- Total orders, sales, products bought
+- Recency, AOV, monthly spend
+
+### ✅ Product Report
+Materialized as a **SQL View** `gold.report_products`:
+- Product category & segment
+- Sales stats: quantity, revenue, customers
+- Recency of last sale
+- KPI: Avg Order Revenue, Monthly Revenue
+
+---
+
+## 📋 Example KPIs Used
+
+| Metric                | Description                              |
+|-----------------------|------------------------------------------|
+| AOV (Avg Order Value) | `Total Sales / Total Orders`             |
+| Recency               | `Months since last order/sale`           |
+| Monthly Spend         | `Total Sales / Lifespan in Months`       |
+| Customer Lifespan     | `Months between first & last order`      |
+| YOY Change            | `Current Year - Previous Year Sales`     |
+
+---
+
+## 💡 Key SQL Concepts Demonstrated
+
+- **CTEs (Common Table Expressions)**
+- **Window Functions** (`LAG`, `SUM() OVER`, `AVG() OVER`)
+- **CASE WHEN** for segmentation
+- **Date & time functions** (`DATEDIFF`, `FORMAT`, `DATETRUNC`)
+- **Aggregate Functions** (`SUM`, `AVG`, `COUNT`)
+- **Joins** and **subqueries**
+- **Views** for report abstraction
+
+---
+
+## 📝 Setup Instructions
+
+### Requirements:
+- SQL Server (2016 or newer recommended)
+- SSMS (SQL Server Management Studio)
+- CSV files placed in appropriate path on local system
+
+### Steps:
+1. Clone this repo:
+   ```bash
+   git clone https://github.com/Rasulajees/sql-data-analytics-project.git
+
+Update the file paths in BULK INSERT statements (point to your actual CSV path):
+FROM 'C:\Path\To\Your\gold.dim_customers.csv'
+
+Open advanced_analytics_project.sql in SSMS and run step-by-step:
+
+Creates database, schema, and tables
+
+Inserts data
+
+Runs all queries and creates views
+
+⚠️ Caution: The script drops the database if it already exists.
+
+📌 Future Enhancements
+ Integrate Power BI or Tableau dashboards
+
+ Automate ETL with SSIS / Python
+
+ Add stored procedures for dynamic report generation
+
+ Introduce data quality checks (e.g., NULL validation)
+
+📚 Learning Outcomes
+✅ End-to-end data warehousing simulation
+
+✅ Business understanding of customer/product KPIs
+
+✅ Real-world SQL analytical skills
+
+✅ Reusable SQL templates for BI reporting
+
+---
+
+Let me know if you'd like help generating:
+- A **Power BI dashboard** for these KPIs
+- A **PDF report** summary of findings
+- **ER diagram** for your schema
+
+Or, I can help **convert this SQL logic to Python or Pandas** for Jupyter Notebook analysis.
+
+👨‍💻 Author
+Name: Rasul khan 
+LinkedIn: https://www.linkedin.com/in/rasul-khan-a-101624296/
+GitHub: https://github.com/Rasulajees
+Email: rasulkhanoffi@gmail.com
+       rasulkhan8870678757@gmail.com
+       rasulkhan2003@outlook.com
+
+📄 License
+This project is open-source and free to use under the MIT License.
+
+🌟 If you found this project helpful, please give it a ⭐ on GitHub!
